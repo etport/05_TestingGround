@@ -6,9 +6,8 @@
 #include "BehaviorTree/BTTaskNode.h"
 #include "ChooseNextWaypoint.generated.h"
 
-/**
- * 
- */
+class APatrollingCharacter; 
+
 UCLASS()
 class S05_TESTINGGROUNDS_API UChooseNextWaypoint : public UBTTaskNode
 {
@@ -19,6 +18,8 @@ class S05_TESTINGGROUNDS_API UChooseNextWaypoint : public UBTTaskNode
 protected:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
 		struct FBlackboardKeySelector IndexKey; 
-	
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+		struct FBlackboardKeySelector WaypointKey;
+
 	
 };
