@@ -7,6 +7,7 @@
 #include "FirstPersonCharacter.generated.h"
 
 class UInputComponent;
+class AGun;
 
 UCLASS(config=Game)
 class AFirstPersonCharacter : public ACharacter
@@ -58,11 +59,14 @@ public:
 	FVector GunOffset;
 
 
-
-
 	/** Whether to use motion controller location for aiming. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	uint32 bUsingMotionControllers : 1;
+
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+		TSubclassOf<AGun> GunBlueprint;
+
 
 protected:
 	
@@ -120,5 +124,7 @@ public:
 	/** Returns FirstPersonCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+private: 
+	AGun* Gun;
 };
 

@@ -2,6 +2,7 @@
 
 #include "Gun.h"
 #include "Projectile.h"
+#include "Components/InputComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Animation/AnimInstance.h"
 
@@ -14,7 +15,7 @@ AGun::AGun()
 
 	// Create a gun mesh component
 	FP_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
-	FP_Gun->SetOnlyOwnerSee(true);			// only the owning player will see this mesh
+
 	FP_Gun->bCastDynamicShadow = false;
 	FP_Gun->CastShadow = false;
 	// FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
@@ -42,6 +43,7 @@ void AGun::Tick(float DeltaTime)
 
 void AGun::OnFire()
 {
+	UE_LOG(LogTemp, Warning, TEXT("Fire")); 
 	// try and fire a projectile
 	if (ProjectileClass != NULL)
 	{
